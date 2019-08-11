@@ -39,13 +39,29 @@ class MyPromise {
         if (this.status === 'rejected') {
             onRejected(this.reason);
         }
+
+        if (this.status === 'pending') {
+            // onFulfilled 传入到成功数组的函数
+            this.onResolvedCallbacks.push(() => {
+                onFulfilled(this.value);
+            })
+            // onRejected 传入到失败数组的函数
+            this.onRejectedCallbacks.push(() => {
+                onRejected(this.reason);
+            })
+        }
     }
 }
-
-const p = new MyPromise((resolve, reject) => resolve(222));
-p.then((value) => console.log(value));
 
 const p2 = new MyPromise((resolve, reject) => setTimeout(() => {
     resolve(1)
 }));
 p2.then((value) => console.log(value));
+
+const p = new MyPromise((resolve, reject) => resolve(222));
+p.then((value) => console.log(value));
+
+const p3 = new MyPromise((resolve, reject) => setTimeout(() => {
+    resolve(333)
+}));
+p3.then((value) => console.log(value));
