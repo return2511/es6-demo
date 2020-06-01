@@ -1,9 +1,7 @@
 class Chain {
     constructor() {
         this.task = [];
-        setTimeout(() => {
-            this.next()
-        }, 0)
+        this.start = false
     }
 
     work() {
@@ -12,6 +10,7 @@ class Chain {
             this.next()
         }
         this.task.push(func);
+        this.launch()
         return this;
     }
 
@@ -21,6 +20,7 @@ class Chain {
             this.next()
         }
         this.task.push(func);
+        this.launch()
         return this;
     }
     sleep(time) {
@@ -31,6 +31,17 @@ class Chain {
                 }, time * 1000);
         }
         this.task.push(func)
+        this.launch()
+        return this;
+    }
+
+    launch() {
+        if (!this.start) {
+            this.start = true
+            setTimeout(() => {
+                this.next()
+            }, 0)
+        }
         return this;
     }
 
