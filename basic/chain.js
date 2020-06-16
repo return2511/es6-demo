@@ -1,6 +1,7 @@
 class Chain {
     constructor() {
         this.task = [];
+        // 使用一个标识来记录是否已经开始
         this.start = false
     }
 
@@ -38,18 +39,20 @@ class Chain {
     launch() {
         if (!this.start) {
             this.start = true
+            // 异步任务，push完所有的任务，再进行执行
             setTimeout(() => {
                 this.next()
             }, 0)
         }
-        return this;
     }
 
     next() {
         const func = this.task.shift();
         func && func();
+        // 如果任务队列为空，则重置开始状态
+        if (this.task.length === 0) this.start = false
     }
 }
 
 const chain = new Chain()
-chain.work().eat().work().sleep(3).work().sleep(5).work()
+chain.sleep(2).work().eat().work().sleep(3).work().sleep(5).work()

@@ -1,5 +1,5 @@
-var p={
-    name:'kevin',
+var p = {
+    name:'xiaolaodi',
     age:2,
     sex:'male'
 }

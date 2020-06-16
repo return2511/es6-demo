@@ -7,29 +7,47 @@
     <style>
         .container {
             position: relative;
-            height: 400px;
-            line-height: 400px;
+            /* height: 400px;
+            line-height: 400px; */
             background: yellow;
             display: flex;
-            /* align-items: center;
-            justify-content: center; */
+            align-items: center;
+            justify-content: space-between;
         }
-        .content {
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            position: absolute;
-            margin: auto;
+        .content1 {
+            /* margin: auto 0; */
             height: 100px;
             width: 100px;
             background: red;
+        }
+        .content2 {
+            /* margin: auto 0; */
+            height: 500px;
+            width: 100px;
+            background: red;
+            /* flex: 1; */
+        }
+        .content3 {
+            /* margin: auto 0; */
+            height: 100px;
+            width: 100px;
+            background: red;
+        }
+        .line {
+            height: 10px;
+            background: green;
+            flex: 1;
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="content"></div>
+        <div class="content1" data-ref="123"></div>
+        <div class="line"></div>
+        <div class="content2" data-ref="123"></div>
+        <div class="line"></div>
+        <div class="content3" data-ref="123"></div>
     </div>
 </body>
 </html>
