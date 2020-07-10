@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-str="123123">111111</div>
+    <div class="test">asdfasdf</div>
+    <div data-name="hy">name</div>
+    <div data-phone="1565656565">phone</div>
+    <div id="test">12333333333</div>
+    <a src="abc" class="src"></a>
+    <script>
+        // 实现一个function 来获取所有的div 中有 data- 的属性的dom
+        (function getAllDataAttr() {
+            const result = []
+            const list = document.querySelectorAll('div')
+            list.forEach(item => {
+                const attrs = item.getAttributeNames();
+                const flag = attrs.some((val) => val.indexOf('data-') > -1)
+                if (flag) result.push(item)
+            })
+            console.log('result', result)
+        })()
+    </script>
+</body>
+</html>
